@@ -6,19 +6,21 @@ data class SolicitacaoRequest(
         @field:NotBlank
         val nome: String,
 
-        @field:Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")
+        @field:Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}",
+                message = "O cliente deve inserir um cpf valido")
         val cpf: String,
 
-        @field:NotBlank
+        @field:NotBlank(message = "A idade deve ser preenchida")
         val idade: Int,
 
-        @field:NotBlank
+        @field:Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}",
+                message = "A data de nascimento deve estar no formato yyyy-MM-dd")
         val dataNascimento: String,
 
-        @field:NotBlank
+        @field:NotBlank(message = "O cliente deve inserir a UF")
         val uf: String,
 
-        @field:NotBlank
+        @field:PositiveOrZero(message = "O cliente deve inserir uma renda válida")
         val rendaMensal: Double,
 
         @field:Email(message = "E-mail inválido")
