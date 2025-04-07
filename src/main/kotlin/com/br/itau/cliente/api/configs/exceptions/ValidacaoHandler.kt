@@ -14,4 +14,10 @@ class ValidacaoHandler {
         val errors = ex.bindingResult.fieldErrors.associate { it.field to it.defaultMessage }
         return ResponseEntity(errors, HttpStatus.UNPROCESSABLE_ENTITY)
     }
+
+    @ExceptionHandler(Exception::class)
+    fun handleGenericException(ex: Exception): ResponseEntity<Map<String, String>> {
+        val errorMessage = mapOf("error" to (ex.message ?: "Erro interno do servidor"))
+        return ResponseEntity(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR)
+    }
 }

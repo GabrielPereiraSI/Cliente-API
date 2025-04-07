@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class SolicitacaoController {
 
-    @PostMapping
+    @PostMapping("/solicitacoes")
     @Operation(summary = "Cria uma nova solicitação de cartão", description = "Valida e retorna os cartões ofertados ao cliente")
     @ApiResponse(responseCode = "200", description = "Solicitação aceita, cartão aprovado")
     @ApiResponse(responseCode = "204", description = "Nenhum cartão disponível para o cliente")

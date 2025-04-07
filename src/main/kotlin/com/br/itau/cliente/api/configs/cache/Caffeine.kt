@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 
 @Configuration
 @EnableCaching
-class CaffeineConfig {
+class Caffeine {
 
     @Bean
     fun caffeineConfig(): Caffeine<Any, Any> {

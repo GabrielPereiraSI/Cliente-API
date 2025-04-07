@@ -5,8 +5,8 @@ import com.br.itau.cliente.api.entities.Cliente
 import java.time.LocalDateTime
 
 data class SolicitacaoResponse(
-    val numeroSolicitacao: String,
-    val dataSolicitacao: LocalDateTime,
+    val numero_solicitacao: String,
+    val data_solicitacao: LocalDateTime,
     val cliente: Cliente,
-    val cartoesOfertados: List<Cartao>
+    val cartoes_ofertados: List<Cartao>
 )

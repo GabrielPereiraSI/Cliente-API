@@ -15,16 +15,16 @@ data class SolicitacaoRequest(
 
         @field:Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}",
                 message = "A data de nascimento deve estar no formato yyyy-MM-dd")
-        val dataNascimento: String,
+        val data_nascimento: String,
 
         @field:NotBlank(message = "O cliente deve inserir a UF")
         val uf: String,
 
         @field:PositiveOrZero(message = "O cliente deve inserir uma renda válida")
-        val rendaMensal: Double,
+        val renda_mensal: Double,
 
         @field:Email(message = "E-mail inválido")
         val email: String,
 
         @field:Pattern(regexp = "\\d{11}", message = "O telefone deve ter 11 dígitos")
-        val telefoneWhatsapp: String)
+        val telefone_whatsapp: String)
