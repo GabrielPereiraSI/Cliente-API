@@ -5,12 +5,12 @@ import com.br.itau.cliente.api.transportlayers.request.SolicitacaoRequest
 import com.br.itau.cliente.api.transportlayers.response.SolicitacaoResponse
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import com.br.itau.cliente.api.transportlayers.mapper.SolicitacaoMapper.Companion.INSTANCE as mapper
+import com.br.itau.cliente.api.transportlayers.mapper.SolicitacaoMapper.Companion.INSTANCE as mapperRequest
+import com.br.itau.cliente.api.transportlayers.mapper.SolicitacaoResponseMapper.Companion.INSTANCE as mapperResponse
 
 @RestController
 class SolicitacaoController(
@@ -23,8 +23,11 @@ class SolicitacaoController(
     @ApiResponse(responseCode = "400", description = "Requisição inválida")
     @ApiResponse(responseCode = "422", description = "Regras de negócio não atendidas")
     fun solicitarCartao(@RequestBody solicitacaoRequest: SolicitacaoRequest): ResponseEntity<SolicitacaoResponse> {
-        solicitacaoCartaoUseCase.enviarSolicitacaoCartao(mapper.toEntity(solicitacaoRequest))
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+        return solicitacaoCartaoUseCase
+            .enviarSolicitacaoCartao(mapperRequest.toEntity(solicitacaoRequest))
+            .takeIf { resultado -> resultado != null }
+            ?.let { resultado -> ResponseEntity.ok(mapperResponse.toResponse(resultado)) }
+            ?: ResponseEntity.noContent().build()
     }
 
 }

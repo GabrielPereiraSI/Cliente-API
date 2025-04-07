@@ -1,6 +1,7 @@
 package com.br.itau.cliente.api.datasources.http
 
-import com.br.itau.cliente.api.transportlayers.request.SolicitacaoRequest
+import com.br.itau.cliente.api.datasources.dto.SolicitacaoResponse
+import com.br.itau.cliente.api.datasources.dto.SolicitacaoRequest
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -9,5 +10,5 @@ import org.springframework.web.bind.annotation.PostMapping
 interface SolicitacaoFeingClient {
 
     @PostMapping("/solicitacoes")
-    fun enviarSolicitacao(solicitacao: SolicitacaoRequest): ResponseEntity<Any>
+    fun enviarSolicitacao(solicitacao: SolicitacaoRequest): ResponseEntity<SolicitacaoResponse>
 }
