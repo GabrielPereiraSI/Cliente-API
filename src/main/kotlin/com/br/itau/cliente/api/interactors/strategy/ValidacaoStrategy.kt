@@ -4,5 +4,5 @@ import com.br.itau.cliente.api.entities.Solicitacao
 
 interface ValidacaoStrategy {
 
-    fun processarSolicitacao(solicitacao: Solicitacao)
+    fun validarSolciitacao(solicitacao: Solicitacao)
 }

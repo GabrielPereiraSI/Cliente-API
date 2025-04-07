@@ -1,6 +1,6 @@
-package com.br.itau.cliente.api.entities
+package com.br.itau.cliente.api.datasources.dto
 
-data class Solicitacao(
+data class SolicitacaoResponse(
     val nome: String,
     val cpf: String,
     val idade: Int,
